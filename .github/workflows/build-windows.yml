@@ -53,14 +53,19 @@ jobs:
         shell: msys2 {0}
         run: |
           cd dist
-          ls
           windeployqt-qt5 --release --no-translations --no-angle --no-opengl-sw --no-system-d3d-compiler candle.exe || echo "windeployqt returned non-zero, continuing with manual copy"
           mkdir -p platforms
-          cp -n /mingw64/share/qt5/plugins/platforms/qwindows.dll platforms/ || cp -n /mingw64/lib/qt5/plugins/platforms/qwindows.dll platforms/
+          # cp -n tra ve ma loi khi file da ton tai -> dung cp -f va khong de loi lam dung script
+          cp -f /mingw64/share/qt5/plugins/platforms/qwindows.dll platforms/ 2>/dev/null || cp -f /mingw64/lib/qt5/plugins/platforms/qwindows.dll platforms/ 2>/dev/null || true
           for f in candle.exe customwidgets.dll platforms/qwindows.dll; do
-            [ -f "$f" ] && ldd "$f" | grep -i '/mingw64/' | awk '{print $3}' | while read d; do cp -n "$d" .; done
+            if [ -f "$f" ]; then
+              for d in $(ldd "$f" | grep -i '/mingw64/' | awk '{print $3}'); do
+                cp -f "$d" . || true
+              done
+            fi
           done
-          ls -R . | head -80
+          find . -maxdepth 2 | sort > ../dist_list.txt
+          head -n 100 ../dist_list.txt
           test -f translations/candle_vi.qm || { echo "THIEU translations/candle_vi.qm"; exit 1; }
 
       - uses: actions/upload-artifact@v4
