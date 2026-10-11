@@ -1,0 +1,1852 @@
+diff --git a/src/candle/frmmain.cpp b/src/candle/frmmain.cpp
+index 633e9b8..e9fee03 100644
+--- a/src/candle/frmmain.cpp
++++ b/src/candle/frmmain.cpp
+@@ -3393,7 +3393,7 @@ void frmMain::loadSettings()
+     set.beginGroup("General");
+ 
+     // Language
+-    m_settings->setLanguage(set.value("language", "en").toString());
++    m_settings->setLanguage(set.value("language", "vi").toString());
+ 
+     // Create help
+     m_help = new frmHelp(m_settings->language());
+diff --git a/src/candle/frmsettings.cpp b/src/candle/frmsettings.cpp
+index 7c13ab7..bbd49a8 100644
+--- a/src/candle/frmsettings.cpp
++++ b/src/candle/frmsettings.cpp
+@@ -1011,7 +1011,7 @@ void frmSettings::setDefaultSettings()
+     ui->chkToolChangePause->setChecked(false);
+     ui->chkToolChangeUseCommands->setChecked(false);
+     ui->chkToolChangeUseCommandsConfirm->setChecked(false);
+-    setLanguage("en");
++    setLanguage("vi");
+ }
+ 
+ void frmSettings::on_cboTheme_currentIndexChanged(int index)
+diff --git a/src/candle/main.cpp b/src/candle/main.cpp
+index a7b7b58..66123cb 100644
+--- a/src/candle/main.cpp
++++ b/src/candle/main.cpp
+@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
+     installFileLogHandler();
+ 
+     QSettings set;
+-    QString locale = set.value("General/language", "en").toString();
++    QString locale = set.value("General/language", "vi").toString();
+ 
+     loadTranslationsForLocale(locale, a);
+ 
+diff --git a/src/candle/translations/candle_vi.ts b/src/candle/translations/candle_vi.ts
+new file mode 100644
+index 0000000..0be7b18
+--- /dev/null
++++ b/src/candle/translations/candle_vi.ts
+@@ -0,0 +1,1530 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE TS>
++<TS version="2.1" language="vi_VN">
++<context>
++    <name>GCodeTableModel</name>
++    <message>
++        <source>#</source>
++        <translation>#</translation>
++    </message>
++    <message>
++        <source>Command</source>
++        <translation>Lệnh</translation>
++    </message>
++    <message>
++        <source>State</source>
++        <translation>Trạng thái</translation>
++    </message>
++    <message>
++        <source>Response</source>
++        <translation>Phản hồi</translation>
++    </message>
++    <message>
++        <source>Line</source>
++        <translation>Dòng</translation>
++    </message>
++    <message>
++        <source>Args</source>
++        <translation>Tham số</translation>
++    </message>
++    <message>
++        <source>In queue</source>
++        <translation>Trong hàng đợi</translation>
++    </message>
++    <message>
++        <source>Sent</source>
++        <translation>Đã gửi</translation>
++    </message>
++    <message>
++        <source>Processed</source>
++        <translation>Đã xử lý</translation>
++    </message>
++    <message>
++        <source>Skipped</source>
++        <translation>Đã bỏ qua</translation>
++    </message>
++    <message>
++        <source>Unknown</source>
++        <translation>Không rõ</translation>
++    </message>
++</context>
++<context>
++    <name>Overlay</name>
++    <message>
++        <source>Vertices: %1</source>
++        <translation>Số đỉnh: %1</translation>
++    </message>
++    <message>
++        <source>Updating</source>
++        <translation>Đang cập nhật</translation>
++    </message>
++</context>
++<context>
++    <name>TableHistoryManager</name>
++    <message>
++        <source>❐</source>
++        <translation>❐</translation>
++    </message>
++    <message>
++        <source>✍</source>
++        <translation>✍</translation>
++    </message>
++    <message>
++        <source>+</source>
++        <translation>+</translation>
++    </message>
++    <message>
++        <source>−</source>
++        <translation>−</translation>
++    </message>
++</context>
++<context>
++    <name>frmAbout</name>
++    <message>
++        <source>About</source>
++        <translation>Giới thiệu</translation>
++    </message>
++    <message>
++        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=" font-weight:600;"&gt;The program is provided AS IS without any guarantees or warranty. Use at your own risk.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
++        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=" font-weight:600;"&gt;Chương trình được cung cấp NGUYÊN TRẠNG, không kèm bất kỳ bảo đảm nào. Bạn tự chịu rủi ro khi sử dụng.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
++    </message>
++    <message>
++        <source>OK</source>
++        <translation>OK</translation>
++    </message>
++    <message>
++        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;%1&lt;br/&gt;Version: %2&lt;br/&gt;Build: %3&lt;br/&gt;License: GNU GENERAL PUBLIC LICENSE&lt;br/&gt;Visit: &lt;a href="https://github.com/Denvi/Candle/"&gt;&lt;span style=" text-decoration: underline;"&gt;https://github.com/Denvi/Candle/&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;© 2015-2026 Hayrullin Denis Ravilevich&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
++        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;%1&lt;br/&gt;Phiên bản: %2&lt;br/&gt;Bản dựng: %3&lt;br/&gt;Giấy phép: GNU GENERAL PUBLIC LICENSE&lt;br/&gt;Truy cập: &lt;a href="https://github.com/Denvi/Candle/"&gt;&lt;span style=" text-decoration: underline;"&gt;https://github.com/Denvi/Candle/&lt;br/&gt;&lt;/span&gt;&lt;/a&gt;© 2015-2026 Hayrullin Denis Ravilevich&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
++    </message>
++</context>
++<context>
++    <name>frmHelp</name>
++    <message>
++        <source>Documentation</source>
++        <translation>Tài liệu</translation>
++    </message>
++    <message>
++        <source>Contents</source>
++        <translation>Mục lục</translation>
++    </message>
++    <message>
++        <source>Search</source>
++        <translation>Tìm kiếm</translation>
++    </message>
++    <message>
++        <source>Next</source>
++        <translation>Tiếp</translation>
++    </message>
++    <message>
++        <source>Previous</source>
++        <translation>Trước</translation>
++    </message>
++    <message>
++        <source>Close</source>
++        <translation>Đóng</translation>
++    </message>
++    <message>
++        <source>Search:</source>
++        <translation>Tìm kiếm:</translation>
++    </message>
++</context>
++<context>
++    <name>frmMain</name>
++    <message>
++        <source>Check</source>
++        <translation>Kiểm tra</translation>
++    </message>
++    <message>
++        <source>Open</source>
++        <translation>Mở</translation>
++    </message>
++    <message>
++        <source>Candle</source>
++        <translation>Candle</translation>
++    </message>
++    <message>
++        <source>Program</source>
++        <translation>Chương trình</translation>
++    </message>
++    <message>
++        <source>Scroll</source>
++        <translation>Cuộn</translation>
++    </message>
++    <message>
++        <source>Reset</source>
++        <translation>Đặt lại</translation>
++    </message>
++    <message>
++        <source>Send</source>
++        <translation>Gửi</translation>
++    </message>
++    <message>
++        <source>Pause</source>
++        <translation>Tạm dừng</translation>
++    </message>
++    <message>
++        <source>Abort</source>
++        <translation>Hủy bỏ</translation>
++    </message>
++    <message>
++        <source>&amp;File</source>
++        <translation>&amp;Tệp</translation>
++    </message>
++    <message>
++        <source>&amp;Recent files</source>
++        <translation>Tệp &amp;gần đây</translation>
++    </message>
++    <message>
++        <source>&amp;Service</source>
++        <translation>&amp;Dịch vụ</translation>
++    </message>
++    <message>
++        <source>&amp;Help</source>
++        <translation>&amp;Trợ giúp</translation>
++    </message>
++    <message>
++        <source>&amp;View</source>
++        <translation>&amp;Xem</translation>
++    </message>
++    <message>
++        <source>&amp;Windows</source>
++        <translation>&amp;Cửa sổ</translation>
++    </message>
++    <message>
++        <source>&amp;Panels</source>
++        <translation>&amp;Bảng điều khiển</translation>
++    </message>
++    <message>
++        <source>Modification</source>
++        <translation>Chỉnh sửa</translation>
++    </message>
++    <message>
++        <source>Overriding</source>
++        <translation>Ghi đè</translation>
++    </message>
++    <message>
++        <source>Heightmap</source>
++        <translation>Bản đồ độ cao</translation>
++    </message>
++    <message>
++        <source>Use heightmap</source>
++        <translation>Dùng bản đồ độ cao</translation>
++    </message>
++    <message>
++        <source>Absent</source>
++        <translation>Chưa có</translation>
++    </message>
++    <message>
++        <source>Map:</source>
++        <translation>Bản đồ:</translation>
++    </message>
++    <message>
++        <source>Create</source>
++        <translation>Tạo</translation>
++    </message>
++    <message>
++        <source>Edit</source>
++        <translation>Sửa</translation>
++    </message>
++    <message>
++        <source>Border:</source>
++        <translation>Đường biên:</translation>
++    </message>
++    <message>
++        <source>X:</source>
++        <translation>X:</translation>
++    </message>
++    <message>
++        <source>H:</source>
++        <translation>H:</translation>
++    </message>
++    <message>
++        <source>Y:</source>
++        <translation>Y:</translation>
++    </message>
++    <message>
++        <source>W:</source>
++        <translation>W:</translation>
++    </message>
++    <message>
++        <source>Show border</source>
++        <translation>Hiện đường biên</translation>
++    </message>
++    <message>
++        <source>Auto</source>
++        <translation>Tự động</translation>
++    </message>
++    <message>
++        <source>Probe grid:</source>
++        <translation>Lưới dò:</translation>
++    </message>
++    <message>
++        <source>Zt:</source>
++        <translation>Zt:</translation>
++    </message>
++    <message>
++        <source>Zb:</source>
++        <translation>Zb:</translation>
++    </message>
++    <message>
++        <source>F:</source>
++        <translation>F:</translation>
++    </message>
++    <message>
++        <source>Show probe grid</source>
++        <translation>Hiện lưới dò</translation>
++    </message>
++    <message>
++        <source>Interpolation grid:</source>
++        <translation>Lưới nội suy:</translation>
++    </message>
++    <message>
++        <source>Show interpolation grid</source>
++        <translation>Hiện lưới nội suy</translation>
++    </message>
++    <message>
++        <source>Device</source>
++        <translation>Thiết bị</translation>
++    </message>
++    <message>
++        <source>State</source>
++        <translation>Trạng thái</translation>
++    </message>
++    <message>
++        <source>X</source>
++        <translation>X</translation>
++    </message>
++    <message>
++        <source>Y</source>
++        <translation>Y</translation>
++    </message>
++    <message>
++        <source>Z</source>
++        <translation>Z</translation>
++    </message>
++    <message>
++        <source>Status:</source>
++        <translation>Tình trạng:</translation>
++    </message>
++    <message>
++        <source>Control</source>
++        <translation>Điều khiển</translation>
++    </message>
++    <message>
++        <source>Unlock</source>
++        <translation>Mở khóa</translation>
++    </message>
++    <message>
++        <source>...</source>
++        <translation>...</translation>
++    </message>
++    <message>
++        <source>Home</source>
++        <translation>Về gốc máy</translation>
++    </message>
++    <message>
++        <source>Flood</source>
++        <translation>Làm mát</translation>
++    </message>
++    <message>
++        <source>Spindle</source>
++        <translation>Trục chính</translation>
++    </message>
++    <message>
++        <source>Spindle on/off</source>
++        <translation>Bật/tắt trục chính</translation>
++    </message>
++    <message>
++        <source>Jog</source>
++        <translation>Di chuyển</translation>
++    </message>
++    <message>
++        <source>X+</source>
++        <translation>X+</translation>
++    </message>
++    <message>
++        <source>X-</source>
++        <translation>X-</translation>
++    </message>
++    <message>
++        <source>Y-</source>
++        <translation>Y-</translation>
++    </message>
++    <message>
++        <source>Stop</source>
++        <translation>Dừng</translation>
++    </message>
++    <message>
++        <source>Y+</source>
++        <translation>Y+</translation>
++    </message>
++    <message>
++        <source>Z+</source>
++        <translation>Z+</translation>
++    </message>
++    <message>
++        <source>Z-</source>
++        <translation>Z-</translation>
++    </message>
++    <message>
++        <source>Continuously</source>
++        <translation>Liên tục</translation>
++    </message>
++    <message>
++        <source>0.01</source>
++        <translation>0.01</translation>
++    </message>
++    <message>
++        <source>0.1</source>
++        <translation>0.1</translation>
++    </message>
++    <message>
++        <source>1</source>
++        <translation>1</translation>
++    </message>
++    <message>
++        <source>5</source>
++        <translation>5</translation>
++    </message>
++    <message>
++        <source>10</source>
++        <translation>10</translation>
++    </message>
++    <message>
++        <source>100</source>
++        <translation>100</translation>
++    </message>
++    <message>
++        <source>Step:</source>
++        <translation>Bước:</translation>
++    </message>
++    <message>
++        <source>Feed:</source>
++        <translation>Tốc độ tiến dao:</translation>
++    </message>
++    <message>
++        <source>50</source>
++        <translation>50</translation>
++    </message>
++    <message>
++        <source>500</source>
++        <translation>500</translation>
++    </message>
++    <message>
++        <source>1000</source>
++        <translation>1000</translation>
++    </message>
++    <message>
++        <source>2000</source>
++        <translation>2000</translation>
++    </message>
++    <message>
++        <source>Keyboard control</source>
++        <translation>Điều khiển bằng bàn phím</translation>
++    </message>
++    <message>
++        <source>Visualizer</source>
++        <translation>Trình hiển thị</translation>
++    </message>
++    <message>
++        <source>Fit</source>
++        <translation>Vừa khung</translation>
++    </message>
++    <message>
++        <source>Top view</source>
++        <translation>Nhìn từ trên</translation>
++    </message>
++    <message>
++        <source>Isometric view</source>
++        <translation>Góc nhìn đẳng cự</translation>
++    </message>
++    <message>
++        <source>Front view</source>
++        <translation>Nhìn từ trước</translation>
++    </message>
++    <message>
++        <source>Left view</source>
++        <translation>Nhìn từ trái</translation>
++    </message>
++    <message>
++        <source>Console</source>
++        <translation>Console</translation>
++    </message>
++    <message>
++        <source>Send command</source>
++        <translation>Gửi lệnh</translation>
++    </message>
++    <message>
++        <source>Clear console</source>
++        <translation>Xóa console</translation>
++    </message>
++    <message>
++        <source>_spacerTop</source>
++        <translation>_spacerTop</translation>
++    </message>
++    <message>
++        <source>_spacerLeft</source>
++        <translation>_spacerLeft</translation>
++    </message>
++    <message>
++        <source>_spacerRight</source>
++        <translation>_spacerRight</translation>
++    </message>
++    <message>
++        <source>User</source>
++        <translation>Người dùng</translation>
++    </message>
++    <message>
++        <source>&amp;New</source>
++        <translation>&amp;Mới</translation>
++    </message>
++    <message>
++        <source>&amp;Open</source>
++        <translation>&amp;Mở</translation>
++    </message>
++    <message>
++        <source>&amp;Save</source>
++        <translation>&amp;Lưu</translation>
++    </message>
++    <message>
++        <source>Save &amp;as...</source>
++        <translation>Lưu &amp;thành...</translation>
++    </message>
++    <message>
++        <source>Save &amp;transformed as...</source>
++        <translation>Lưu bản đã &amp;biến đổi thành...</translation>
++    </message>
++    <message>
++        <source>&amp;Clear</source>
++        <translation>&amp;Xóa</translation>
++    </message>
++    <message>
++        <source>E&amp;xit</source>
++        <translation>T&amp;hoát</translation>
++    </message>
++    <message>
++        <source>&amp;Settings</source>
++        <translation>&amp;Cài đặt</translation>
++    </message>
++    <message>
++        <source>&amp;About</source>
++        <translation>&amp;Giới thiệu</translation>
++    </message>
++    <message>
++        <source>Spindle speed +</source>
++        <translation>Tốc độ trục chính +</translation>
++    </message>
++    <message>
++        <source>Spindle speed -</source>
++        <translation>Tốc độ trục chính -</translation>
++    </message>
++    <message>
++        <source>Jog step next</source>
++        <translation>Bước di chuyển kế tiếp</translation>
++    </message>
++    <message>
++        <source>Jog step previous</source>
++        <translation>Bước di chuyển trước đó</translation>
++    </message>
++    <message>
++        <source>Jog feed next</source>
++        <translation>Tốc độ di chuyển kế tiếp</translation>
++    </message>
++    <message>
++        <source>Jog feed previous</source>
++        <translation>Tốc độ di chuyển trước đó</translation>
++    </message>
++    <message>
++        <source>Feed override +</source>
++        <translation>Ghi đè tốc độ tiến dao +</translation>
++    </message>
++    <message>
++        <source>Feed override -</source>
++        <translation>Ghi đè tốc độ tiến dao -</translation>
++    </message>
++    <message>
++        <source>Rapid override +</source>
++        <translation>Ghi đè chạy nhanh +</translation>
++    </message>
++    <message>
++        <source>Rapid override -</source>
++        <translation>Ghi đè chạy nhanh -</translation>
++    </message>
++    <message>
++        <source>Spindle override +</source>
++        <translation>Ghi đè trục chính +</translation>
++    </message>
++    <message>
++        <source>Spindle override -</source>
++        <translation>Ghi đè trục chính -</translation>
++    </message>
++    <message>
++        <source>Feed override</source>
++        <translation>Ghi đè tốc độ tiến dao</translation>
++    </message>
++    <message>
++        <source>Rapid speed override</source>
++        <translation>Ghi đè tốc độ chạy nhanh</translation>
++    </message>
++    <message>
++        <source>Spindle speed override</source>
++        <translation>Ghi đè tốc độ trục chính</translation>
++    </message>
++    <message>
++        <source>&amp;Lock windows</source>
++        <translation>&amp;Khóa cửa sổ</translation>
++    </message>
++    <message>
++        <source>L&amp;ock panels</source>
++        <translation>Khó&amp;a bảng điều khiển</translation>
++    </message>
++    <message>
++        <source>&amp;Documentation</source>
++        <translation>&amp;Tài liệu</translation>
++    </message>
++    <message>
++        <source>Unknown</source>
++        <translation>Không rõ</translation>
++    </message>
++    <message>
++        <source>Idle</source>
++        <translation>Nghỉ</translation>
++    </message>
++    <message>
++        <source>Alarm</source>
++        <translation>Báo động</translation>
++    </message>
++    <message>
++        <source>Run</source>
++        <translation>Chạy</translation>
++    </message>
++    <message>
++        <source>Hold</source>
++        <translation>Giữ</translation>
++    </message>
++    <message>
++        <source>Queue</source>
++        <translation>Hàng đợi</translation>
++    </message>
++    <message>
++        <source>Door</source>
++        <translation>Cửa</translation>
++    </message>
++    <message>
++        <source>Sleep</source>
++        <translation>Ngủ</translation>
++    </message>
++    <message>
++        <source>Feed rate:</source>
++        <translation>Tốc độ tiến dao:</translation>
++    </message>
++    <message>
++        <source>Rapid speed:</source>
++        <translation>Tốc độ chạy nhanh:</translation>
++    </message>
++    <message>
++        <source>Spindle speed:</source>
++        <translation>Tốc độ trục chính:</translation>
++    </message>
++    <message>
++        <source>&amp;Insert line</source>
++        <translation>&amp;Chèn dòng</translation>
++    </message>
++    <message>
++        <source>&amp;Delete lines</source>
++        <translation>&amp;Xóa dòng</translation>
++    </message>
++    <message>
++        <source>Don't show again</source>
++        <translation>Không hiện lại</translation>
++    </message>
++    <message>
++        <source>Speed:</source>
++        <translation>Tốc độ:</translation>
++    </message>
++    <message>
++        <source>G-Code files (*.nc *.ncc *.ngc *.tap *.txt *.gcode)</source>
++        <translation>Tệp G-Code (*.nc *.ncc *.ngc *.tap *.txt *.gcode)</translation>
++    </message>
++    <message>
++        <source>G-Code files (*.nc *.ncc *.ngc *.tap *.txt *.gcode);;All files (*.*)</source>
++        <translation>Tệp G-Code (*.nc *.ncc *.ngc *.tap *.txt *.gcode);;Tất cả tệp (*.*)</translation>
++    </message>
++    <message>
++        <source>Change tool and press 'Pause' button to continue job</source>
++        <translation>Hãy thay dao và nhấn nút 'Tạm dừng' để tiếp tục công việc</translation>
++    </message>
++    <message>
++        <source>M6 command detected. Send tool change commands?
++</source>
++        <translation>Phát hiện lệnh M6. Gửi các lệnh thay dao?
++</translation>
++    </message>
++    <message>
++        <source>G-code program file was changed. Save?</source>
++        <translation>Tệp chương trình G-code đã thay đổi. Lưu lại?</translation>
++    </message>
++    <message>
++        <source>Heightmap file was changed. Save?</source>
++        <translation>Tệp bản đồ độ cao đã thay đổi. Lưu lại?</translation>
++    </message>
++    <message>
++        <source>Not connected</source>
++        <translation>Chưa kết nối</translation>
++    </message>
++    <message>
++        <source>G-code program</source>
++        <translation>Chương trình G-code</translation>
++    </message>
++    <message>
++        <source>Probe</source>
++        <translation>Dò</translation>
++    </message>
++    <message>
++        <source>Port opened</source>
++        <translation>Đã mở cổng</translation>
++    </message>
++    <message>
++        <source>Job done.
++Time elapsed: %1</source>
++        <translation>Đã hoàn thành.
++Thời gian thực hiện: %1</translation>
++    </message>
++    <message>
++        <source>PS: %1</source>
++        <translation>PS: %1</translation>
++    </message>
++    <message>
++        <source>AS: %1</source>
++        <translation>AS: %1</translation>
++    </message>
++    <message>
++        <source>F/S: %1 / %2</source>
++        <translation>F/S: %1 / %2</translation>
++    </message>
++    <message>
++        <source>Error message(s) received:
++</source>
++        <translation>Đã nhận được thông báo lỗi:
++</translation>
++    </message>
++    <message>
++        <source>Buffer: %1 / %2 / %3</source>
++        <translation>Bộ đệm: %1 / %2 / %3</translation>
++    </message>
++    <message>
++        <source>File sending in progress. Terminate and exit?</source>
++        <translation>Đang gửi tệp. Dừng lại và thoát?</translation>
++    </message>
++    <message>
++        <source>Heightmap files (*.map)</source>
++        <translation>Tệp bản đồ độ cao (*.map)</translation>
++    </message>
++    <message>
++        <source>Opening file...</source>
++        <translation>Đang mở tệp...</translation>
++    </message>
++    <message>
++        <source>Can't open file:
++</source>
++        <translation>Không thể mở tệp:
++</translation>
++    </message>
++    <message>
++        <source>Following commands will be sent before selected line:
++</source>
++        <translation>Các lệnh sau sẽ được gửi trước dòng đã chọn:
++</translation>
++    </message>
++    <message>
++        <source> (%1)</source>
++        <translation> (%1)</translation>
++    </message>
++    <message>
++        <source>Delete lines?</source>
++        <translation>Xóa các dòng này?</translation>
++    </message>
++    <message>
++        <source>Untitled</source>
++        <translation>Chưa đặt tên</translation>
++    </message>
++    <message>
++        <source>Save file as</source>
++        <translation>Lưu tệp thành</translation>
++    </message>
++    <message>
++        <source> (%1/%2/%3)</source>
++        <translation> (%1/%2/%3)</translation>
++    </message>
++    <message>
++        <source> (%1/%2)</source>
++        <translation> (%1/%2)</translation>
++    </message>
++    <message>
++        <source>C</source>
++        <translation>C</translation>
++    </message>
++    <message>
++        <source>Changing grid settings will reset probe data. Continue?</source>
++        <translation>Thay đổi cài đặt lưới sẽ đặt lại dữ liệu dò. Tiếp tục?</translation>
++    </message>
++    <message>
++        <source>Applying heightmap...</source>
++        <translation>Đang áp dụng bản đồ độ cao...</translation>
++    </message>
++    <message>
++        <source>Subdividing segments...</source>
++        <translation>Đang chia nhỏ các đoạn...</translation>
++    </message>
++    <message>
++        <source>Updating Z-coordinates...</source>
++        <translation>Đang cập nhật tọa độ Z...</translation>
++    </message>
++    <message>
++        <source>Modifying G-code program...</source>
++        <translation>Đang sửa chương trình G-code...</translation>
++    </message>
++    <message>
++        <source>Perspective view</source>
++        <translation>Phối cảnh</translation>
++    </message>
++    <message>
++        <source>&amp;Logs</source>
++        <translation>&amp;Nhật ký</translation>
++    </message>
++    <message>
++        <source>Script</source>
++        <translation>Script</translation>
++    </message>
++    <message>
++        <source>Log</source>
++        <translation>Nhật ký</translation>
++    </message>
++    <message>
++        <source>&amp;Reload</source>
++        <translation>Tải &amp;lại</translation>
++    </message>
++    <message>
++        <source>Move toolhead to heightmap origin</source>
++        <translation>Di chuyển đầu dao về gốc bản đồ độ cao</translation>
++    </message>
++    <message>
++        <source>Origin</source>
++        <translation>Gốc</translation>
++    </message>
++    <message>
++        <source>Origin:</source>
++        <translation>Gốc:</translation>
++    </message>
++    <message>
++        <source>Type:</source>
++        <translation>Loại:</translation>
++    </message>
++    <message>
++        <source>Bicubic</source>
++        <translation>Bicubic</translation>
++    </message>
++    <message>
++        <source>Show origin</source>
++        <translation>Hiện gốc</translation>
++    </message>
++    <message>
++        <source>Use current toolhead position</source>
++        <translation>Dùng vị trí đầu dao hiện tại</translation>
++    </message>
++    <message>
++        <source>Tool</source>
++        <translation>Dao</translation>
++    </message>
++    <message>
++        <source>&amp;Delete</source>
++        <translation>&amp;Xóa</translation>
++    </message>
++    <message>
++        <source>Default</source>
++        <translation>Mặc định</translation>
++    </message>
++    <message>
++        <source>&amp;Profiles</source>
++        <translation>&amp;Hồ sơ</translation>
++    </message>
++    <message>
++        <source>Enter profile name</source>
++        <translation>Nhập tên hồ sơ</translation>
++    </message>
++    <message>
++        <source>&amp;Create</source>
++        <translation>&amp;Tạo</translation>
++    </message>
++    <message>
++        <source>Profile '%1' already exists</source>
++        <translation>Hồ sơ '%1' đã tồn tại</translation>
++    </message>
++    <message>
++        <source>Machine</source>
++        <translation>Máy</translation>
++    </message>
++    <message>
++        <source>Work</source>
++        <translation>Gia công</translation>
++    </message>
++    <message>
++        <source>A</source>
++        <translation>A</translation>
++    </message>
++    <message>
++        <source>A+</source>
++        <translation>A+</translation>
++    </message>
++    <message>
++        <source>A-</source>
++        <translation>A-</translation>
++    </message>
++    <message>
++        <source>Connection error </source>
++        <translation>Lỗi kết nối </translation>
++    </message>
++    <message>
++        <source>&amp;Import</source>
++        <translation>&amp;Nhập</translation>
++    </message>
++    <message>
++        <source>&amp;Export</source>
++        <translation>&amp;Xuất</translation>
++    </message>
++    <message>
++        <source>Save</source>
++        <translation>Lưu</translation>
++    </message>
++    <message>
++        <source>Select profiles</source>
++        <translation>Chọn hồ sơ</translation>
++    </message>
++    <message>
++        <source>Profile '%1' already exists. Overwrite?</source>
++        <translation>Hồ sơ '%1' đã tồn tại. Ghi đè?</translation>
++    </message>
++    <message>
++        <source>Profiles (*.cpr)</source>
++        <translation>Hồ sơ (*.cpr)</translation>
++    </message>
++    <message>
++        <source>Documentation</source>
++        <translation>Tài liệu</translation>
++    </message>
++    <message>
++        <source>From Line</source>
++        <translation>Từ dòng</translation>
++    </message>
++    <message>
++        <source>Sending file from SD card completed</source>
++        <translation>Đã gửi xong tệp từ thẻ SD</translation>
++    </message>
++    <message>
++        <source>&amp;Copy lines</source>
++        <translation>&amp;Sao chép dòng</translation>
++    </message>
++    <message>
++        <source>&amp;Paste lines</source>
++        <translation>&amp;Dán dòng</translation>
++    </message>
++    <message>
++        <source>&amp;Cut lines</source>
++        <translation>&amp;Cắt dòng</translation>
++    </message>
++    <message>
++        <source>&amp;Undo</source>
++        <translation>&amp;Hoàn tác</translation>
++    </message>
++    <message>
++        <source>&amp;Redo</source>
++        <translation>&amp;Làm lại</translation>
++    </message>
++    <message>
++        <source>&lt;span style="color:#ff0000;"&gt;%1&lt;/span&gt;</source>
++        <translation>&lt;span style="color:#ff0000;"&gt;%1&lt;/span&gt;</translation>
++    </message>
++    <message>
++        <source>[%1] </source>
++        <translation>[%1] </translation>
++    </message>
++    <message>
++        <source> [%1]</source>
++        <translation> [%1]</translation>
++    </message>
++    <message>
++        <source>Updating...</source>
++        <translation>Đang cập nhật...</translation>
++    </message>
++</context>
++<context>
++    <name>frmScript</name>
++    <message>
++        <source>Open</source>
++        <translation>Mở</translation>
++    </message>
++    <message>
++        <source>Start</source>
++        <translation>Bắt đầu</translation>
++    </message>
++    <message>
++        <source>Script files (*.js)</source>
++        <translation>Tệp script (*.js)</translation>
++    </message>
++    <message>
++        <source>Can't open file:
++</source>
++        <translation>Không thể mở tệp:
++</translation>
++    </message>
++    <message>
++        <source>New</source>
++        <translation>Mới</translation>
++    </message>
++    <message>
++        <source>Save</source>
++        <translation>Lưu</translation>
++    </message>
++    <message>
++        <source>Script was changed. Save?</source>
++        <translation>Script đã thay đổi. Lưu lại?</translation>
++    </message>
++    <message>
++        <source>Save file as</source>
++        <translation>Lưu tệp thành</translation>
++    </message>
++    <message>
++        <source>Debug</source>
++        <translation>Gỡ lỗi</translation>
++    </message>
++</context>
++<context>
++    <name>frmSettings</name>
++    <message>
++        <source>Reset settings to default values?</source>
++        <translation>Đặt lại cài đặt về giá trị mặc định?</translation>
++    </message>
++    <message>
++        <source>Settings</source>
++        <translation>Cài đặt</translation>
++    </message>
++    <message>
++        <source>Connection</source>
++        <translation>Kết nối</translation>
++    </message>
++    <message>
++        <source>Baud:</source>
++        <translation>Tốc độ baud:</translation>
++    </message>
++    <message>
++        <source>Port:</source>
++        <translation>Cổng:</translation>
++    </message>
++    <message>
++        <source>9600</source>
++        <translation>9600</translation>
++    </message>
++    <message>
++        <source>14400</source>
++        <translation>14400</translation>
++    </message>
++    <message>
++        <source>19200</source>
++        <translation>19200</translation>
++    </message>
++    <message>
++        <source>38400</source>
++        <translation>38400</translation>
++    </message>
++    <message>
++        <source>57600</source>
++        <translation>57600</translation>
++    </message>
++    <message>
++        <source>115200</source>
++        <translation>115200</translation>
++    </message>
++    <message>
++        <source>...</source>
++        <translation>...</translation>
++    </message>
++    <message>
++        <source>Status query period:</source>
++        <translation>Chu kỳ truy vấn trạng thái:</translation>
++    </message>
++    <message>
++        <source>max.:</source>
++        <translation>tối đa:</translation>
++    </message>
++    <message>
++        <source>Laser power min.:</source>
++        <translation>Công suất laser tối thiểu:</translation>
++    </message>
++    <message>
++        <source>Spindle speed min.:</source>
++        <translation>Tốc độ trục chính tối thiểu:</translation>
++    </message>
++    <message>
++        <source>Reference position:</source>
++        <translation>Vị trí tham chiếu:</translation>
++    </message>
++    <message>
++        <source>X-</source>
++        <translation>X-</translation>
++    </message>
++    <message>
++        <source>X+</source>
++        <translation>X+</translation>
++    </message>
++    <message>
++        <source>Y-</source>
++        <translation>Y-</translation>
++    </message>
++    <message>
++        <source>Y+</source>
++        <translation>Y+</translation>
++    </message>
++    <message>
++        <source>Z-</source>
++        <translation>Z-</translation>
++    </message>
++    <message>
++        <source>Z+</source>
++        <translation>Z+</translation>
++    </message>
++    <message>
++        <source>Sender</source>
++        <translation>Bộ gửi lệnh</translation>
++    </message>
++    <message>
++        <source>Use program start commands:</source>
++        <translation>Dùng lệnh bắt đầu chương trình:</translation>
++    </message>
++    <message>
++        <source>Use program end commands:</source>
++        <translation>Dùng lệnh kết thúc chương trình:</translation>
++    </message>
++    <message>
++        <source>Use tool change commands:</source>
++        <translation>Dùng lệnh thay dao:</translation>
++    </message>
++    <message>
++        <source>Confirm tool change commands execution</source>
++        <translation>Xác nhận trước khi thực hiện lệnh thay dao</translation>
++    </message>
++    <message>
++        <source>Pause sender on M6 command</source>
++        <translation>Tạm dừng gửi khi gặp lệnh M6</translation>
++    </message>
++    <message>
++        <source>Ignore error responses</source>
++        <translation>Bỏ qua phản hồi lỗi</translation>
++    </message>
++    <message>
++        <source>Automatically set parser state before sending from selected line</source>
++        <translation>Tự động đặt trạng thái bộ phân tích trước khi gửi từ dòng đã chọn</translation>
++    </message>
++    <message>
++        <source>Visualizer</source>
++        <translation>Trình hiển thị</translation>
++    </message>
++    <message>
++        <source>Z-buffer</source>
++        <translation>Z-buffer</translation>
++    </message>
++    <message>
++        <source>MSAA</source>
++        <translation>MSAA</translation>
++    </message>
++    <message>
++        <source>Line width:</source>
++        <translation>Độ rộng nét:</translation>
++    </message>
++    <message>
++        <source>FPS lock:</source>
++        <translation>Giới hạn FPS:</translation>
++    </message>
++    <message>
++        <source>30</source>
++        <translation>30</translation>
++    </message>
++    <message>
++        <source>60</source>
++        <translation>60</translation>
++    </message>
++    <message>
++        <source>120</source>
++        <translation>120</translation>
++    </message>
++    <message>
++        <source>Program draw mode:</source>
++        <translation>Chế độ vẽ chương trình:</translation>
++    </message>
++    <message>
++        <source>Vectors</source>
++        <translation>Vector</translation>
++    </message>
++    <message>
++        <source>Raster</source>
++        <translation>Raster</translation>
++    </message>
++    <message>
++        <source>By 'Z'-code</source>
++        <translation>Theo mã 'Z'</translation>
++    </message>
++    <message>
++        <source>By 'S'-code</source>
++        <translation>Theo mã 'S'</translation>
++    </message>
++    <message>
++        <source>Grayscale segments</source>
++        <translation>Đoạn theo thang xám</translation>
++    </message>
++    <message>
++        <source>Simplify geometry</source>
++        <translation>Đơn giản hóa hình học</translation>
++    </message>
++    <message>
++        <source>Precision:</source>
++        <translation>Độ chính xác:</translation>
++    </message>
++    <message>
++        <source>V-sync</source>
++        <translation>V-sync</translation>
++    </message>
++    <message>
++        <source>Smoothing</source>
++        <translation>Làm mịn</translation>
++    </message>
++    <message>
++        <source>Colors</source>
++        <translation>Màu sắc</translation>
++    </message>
++    <message>
++        <source>Z-movement:</source>
++        <translation>Chuyển động Z:</translation>
++    </message>
++    <message>
++        <source>Toolpath</source>
++        <translation>Đường chạy dao</translation>
++    </message>
++    <message>
++        <source>Background:</source>
++        <translation>Nền:</translation>
++    </message>
++    <message>
++        <source>Highlight:</source>
++        <translation>Tô sáng:</translation>
++    </message>
++    <message>
++        <source>Start point:</source>
++        <translation>Điểm bắt đầu:</translation>
++    </message>
++    <message>
++        <source>End point:</source>
++        <translation>Điểm kết thúc:</translation>
++    </message>
++    <message>
++        <source>Text:</source>
++        <translation>Văn bản:</translation>
++    </message>
++    <message>
++        <source>Tool:</source>
++        <translation>Dao:</translation>
++    </message>
++    <message>
++        <source>Drawn:</source>
++        <translation>Đã vẽ:</translation>
++    </message>
++    <message>
++        <source>Normal:</source>
++        <translation>Bình thường:</translation>
++    </message>
++    <message>
++        <source>Tool model</source>
++        <translation>Mô hình dao</translation>
++    </message>
++    <message>
++        <source>Type:</source>
++        <translation>Loại:</translation>
++    </message>
++    <message>
++        <source>Diameter:</source>
++        <translation>Đường kính:</translation>
++    </message>
++    <message>
++        <source>Flat</source>
++        <translation>Đầu phẳng</translation>
++    </message>
++    <message>
++        <source>Conic</source>
++        <translation>Đầu côn</translation>
++    </message>
++    <message>
++        <source>Angle:</source>
++        <translation>Góc:</translation>
++    </message>
++    <message>
++        <source>Length:</source>
++        <translation>Chiều dài:</translation>
++    </message>
++    <message>
++        <source>Shortcuts</source>
++        <translation>Phím tắt</translation>
++    </message>
++    <message>
++        <source>Command</source>
++        <translation>Lệnh</translation>
++    </message>
++    <message>
++        <source>Text</source>
++        <translation>Văn bản</translation>
++    </message>
++    <message>
++        <source>Console</source>
++        <translation>Console</translation>
++    </message>
++    <message>
++        <source>Show G-code program commands</source>
++        <translation>Hiện các lệnh của chương trình G-code</translation>
++    </message>
++    <message>
++        <source>Show UI commands</source>
++        <translation>Hiện các lệnh từ giao diện</translation>
++    </message>
++    <message>
++        <source>Command auto-completion</source>
++        <translation>Tự động hoàn thành lệnh</translation>
++    </message>
++    <message>
++        <source>User interface</source>
++        <translation>Giao diện người dùng</translation>
++    </message>
++    <message>
++        <source>pt</source>
++        <translation>pt</translation>
++    </message>
++    <message>
++        <source>8</source>
++        <translation>8</translation>
++    </message>
++    <message>
++        <source>9</source>
++        <translation>9</translation>
++    </message>
++    <message>
++        <source>10</source>
++        <translation>10</translation>
++    </message>
++    <message>
++        <source>11</source>
++        <translation>11</translation>
++    </message>
++    <message>
++        <source>12</source>
++        <translation>12</translation>
++    </message>
++    <message>
++        <source>Font size:</source>
++        <translation>Cỡ chữ:</translation>
++    </message>
++    <message>
++        <source>Language:</source>
++        <translation>Ngôn ngữ:</translation>
++    </message>
++    <message>
++        <source>(restart needed)</source>
++        <translation>(cần khởi động lại)</translation>
++    </message>
++    <message>
++        <source>Set to defaults</source>
++        <translation>Đặt về mặc định</translation>
++    </message>
++    <message>
++        <source>OK</source>
++        <translation>OK</translation>
++    </message>
++    <message>
++        <source>Cancel</source>
++        <translation>Hủy</translation>
++    </message>
++    <message>
++        <source>Invert slider controls</source>
++        <translation>Đảo chiều thanh trượt</translation>
++    </message>
++    <message>
++        <source>250000</source>
++        <translation>250000</translation>
++    </message>
++    <message>
++        <source>Panel width:</source>
++        <translation>Độ rộng bảng:</translation>
++    </message>
++    <message>
++        <source>(average char width)</source>
++        <translation>(độ rộng ký tự trung bình)</translation>
++    </message>
++    <message>
++        <source>X</source>
++        <translation>X</translation>
++    </message>
++    <message>
++        <source>Y</source>
++        <translation>Y</translation>
++    </message>
++    <message>
++        <source>Enable axis 'A'</source>
++        <translation>Bật trục 'A'</translation>
++    </message>
++    <message>
++        <source>direction:</source>
++        <translation>chiều:</translation>
++    </message>
++    <message>
++        <source>Import</source>
++        <translation>Nhập</translation>
++    </message>
++    <message>
++        <source>Export</source>
++        <translation>Xuất</translation>
++    </message>
++    <message>
++        <source>Save</source>
++        <translation>Lưu</translation>
++    </message>
++    <message>
++        <source>Open</source>
++        <translation>Mở</translation>
++    </message>
++    <message>
++        <source>Shortcut files (*.sc)</source>
++        <translation>Tệp phím tắt (*.sc)</translation>
++    </message>
++    <message>
++        <source>Serial</source>
++        <translation>Serial</translation>
++    </message>
++    <message>
++        <source>Telnet</source>
++        <translation>Telnet</translation>
++    </message>
++    <message>
++        <source>Address:</source>
++        <translation>Địa chỉ:</translation>
++    </message>
++    <message>
++        <source>Arc approximation
++segment size:</source>
++        <translation>Kích thước đoạn xấp xỉ
++cung tròn:</translation>
++    </message>
++    <message>
++        <source>By length</source>
++        <translation>Theo chiều dài</translation>
++    </message>
++    <message>
++        <source>By angle (deg.)</source>
++        <translation>Theo góc (độ)</translation>
++    </message>
++    <message>
++        <source>WebSocket</source>
++        <translation>WebSocket</translation>
++    </message>
++    <message>
++        <source>URL:</source>
++        <translation>URL:</translation>
++    </message>
++    <message>
++        <source>Mode:</source>
++        <translation>Chế độ:</translation>
++    </message>
++    <message>
++        <source>Binary</source>
++        <translation>Nhị phân</translation>
++    </message>
++    <message>
++        <source>0.1, 1, 10, ...</source>
++        <translation>0.1, 1, 10, ...</translation>
++    </message>
++    <message>
++        <source>Jog steps:</source>
++        <translation>Các bước di chuyển:</translation>
++    </message>
++    <message>
++        <source>1, 10, 100, ...</source>
++        <translation>1, 10, 100, ...</translation>
++    </message>
++    <message>
++        <source>Jog feeds:</source>
++        <translation>Các tốc độ di chuyển:</translation>
++    </message>
++    <message>
++        <source>Machine information</source>
++        <translation>Thông tin máy</translation>
++    </message>
++    <message>
++        <source>Reset machine on connection</source>
++        <translation>Đặt lại máy khi kết nối</translation>
++    </message>
++    <message>
++        <source>Theme:</source>
++        <translation>Chủ đề:</translation>
++    </message>
++    <message>
++        <source>System theme</source>
++        <translation>Chủ đề hệ thống</translation>
++    </message>
++    <message>
++        <source>Dark theme</source>
++        <translation>Chủ đề tối</translation>
++    </message>
++    <message>
++        <source>Light theme</source>
++        <translation>Chủ đề sáng</translation>
++    </message>
++    <message>
++        <source>Custom theme</source>
++        <translation>Chủ đề tùy chỉnh</translation>
++    </message>
++    <message>
++        <source>Palette colors</source>
++        <translation>Bảng màu</translation>
++    </message>
++    <message>
++        <source>Window:</source>
++        <translation>Cửa sổ:</translation>
++    </message>
++    <message>
++        <source>Window text:</source>
++        <translation>Chữ cửa sổ:</translation>
++    </message>
++    <message>
++        <source>Base:</source>
++        <translation>Nền ô nhập:</translation>
++    </message>
++    <message>
++        <source>Button:</source>
++        <translation>Nút:</translation>
++    </message>
++    <message>
++        <source>Button text:</source>
++        <translation>Chữ trên nút:</translation>
++    </message>
++    <message>
++        <source>Highlighted text:</source>
++        <translation>Chữ được tô sáng:</translation>
++    </message>
++    <message>
++        <source>Grid</source>
++        <translation>Lưới</translation>
++    </message>
++    <message>
++        <source>Primary:</source>
++        <translation>Chính:</translation>
++    </message>
++    <message>
++        <source>Secondary:</source>
++        <translation>Phụ:</translation>
++    </message>
++</context>
++</TS>
+diff --git a/src/candleplugins/camera/translation_vi.ts b/src/candleplugins/camera/translation_vi.ts
+new file mode 100644
+index 0000000..7ca100e
+--- /dev/null
++++ b/src/candleplugins/camera/translation_vi.ts
+@@ -0,0 +1,54 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE TS>
++<TS version="2.1" language="vi_VN">
++<context>
++    <name>frmMain</name>
++    <message>
++        <source>Camera</source>
++        <translation>Camera</translation>
++    </message>
++</context>
++<context>
++    <name>pluginCameraSettings</name>
++    <message>
++        <source>Name:</source>
++        <translation>Tên:</translation>
++    </message>
++    <message>
++        <source>Resolution:</source>
++        <translation>Độ phân giải:</translation>
++    </message>
++    <message>
++        <source>Position:</source>
++        <translation>Vị trí:</translation>
++    </message>
++    <message>
++        <source>Zoom:</source>
++        <translation>Thu phóng:</translation>
++    </message>
++    <message>
++        <source>Aim position:</source>
++        <translation>Vị trí tâm ngắm:</translation>
++    </message>
++    <message>
++        <source>Aim size:</source>
++        <translation>Kích thước tâm ngắm:</translation>
++    </message>
++    <message>
++        <source>Aim line width:</source>
++        <translation>Độ rộng nét tâm ngắm:</translation>
++    </message>
++    <message>
++        <source>Aim color:</source>
++        <translation>Màu tâm ngắm:</translation>
++    </message>
++    <message>
++        <source>Mirror horizontal</source>
++        <translation>Lật ngang</translation>
++    </message>
++    <message>
++        <source>Mirror vertical</source>
++        <translation>Lật dọc</translation>
++    </message>
++</context>
++</TS>
+diff --git a/src/candleplugins/coordinatesystem/translation_vi.ts b/src/candleplugins/coordinatesystem/translation_vi.ts
+new file mode 100644
+index 0000000..e4240ee
+--- /dev/null
++++ b/src/candleplugins/coordinatesystem/translation_vi.ts
+@@ -0,0 +1,54 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE TS>
++<TS version="2.1" language="vi_VN">
++<context>
++    <name>frmMain</name>
++    <message>
++        <source>Coordinate system</source>
++        <translation>Hệ tọa độ</translation>
++    </message>
++</context>
++<context>
++    <name>CoordinateSystem</name>
++    <message>
++        <source>Offsets:</source>
++        <translation>Độ lệch:</translation>
++    </message>
++    <message>
++        <source>Zero X</source>
++        <translation>Zero X</translation>
++    </message>
++    <message>
++        <source>Zero Y</source>
++        <translation>Zero Y</translation>
++    </message>
++    <message>
++        <source>Zero Z</source>
++        <translation>Zero Z</translation>
++    </message>
++    <message>
++        <source>Zero A</source>
++        <translation>Zero A</translation>
++    </message>
++    <message>
++        <source>Zero All</source>
++        <translation>Zero tất cả</translation>
++    </message>
++    <message>
++        <source>G54 coordinate system</source>
++        <translation>Hệ tọa độ G54</translation>
++    </message>
++    <message>
++        <source>G55 coordinate system</source>
++        <translation>Hệ tọa độ G55</translation>
++    </message>
++    <message>
++        <source>G56 coordinate system</source>
++        <translation>Hệ tọa độ G56</translation>
++    </message>
++    <message>
++        <source>G57 coordinate system</source>
++        <translation>Hệ tọa độ G57</translation>
++    </message>
++</context>
++</TS>
+diff --git a/src/candleplugins/emergencybutton/translation_vi.ts b/src/candleplugins/emergencybutton/translation_vi.ts
+new file mode 100644
+index 0000000..f001eda
+--- /dev/null
++++ b/src/candleplugins/emergencybutton/translation_vi.ts
+@@ -0,0 +1,18 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE TS>
++<TS version="2.1" language="vi_VN">
++<context>
++    <name>frmMain</name>
++    <message>
++        <source>Emergency button</source>
++        <translation>Nút dừng khẩn cấp</translation>
++    </message>
++</context>
++<context>
++    <name>EmergencyButton</name>
++    <message>
++        <source>Emergency button</source>
++        <translation>Nút dừng khẩn cấp</translation>
++    </message>
++</context>
++</TS>
+diff --git a/src/candleplugins/usercommands/translation_vi.ts b/src/candleplugins/usercommands/translation_vi.ts
+new file mode 100644
+index 0000000..793235a
+--- /dev/null
++++ b/src/candleplugins/usercommands/translation_vi.ts
+@@ -0,0 +1,127 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE TS>
++<TS version="2.1" language="vi_VN">
++<context>
++    <message>
++        <source>User button</source>
++        <translation>Nút người dùng</translation>
++    </message>
++    <message>
++        <source>Open</source>
++        <translation>Mở</translation>
++    </message>
++    <message>
++        <source>Save</source>
++        <translation>Lưu</translation>
++    </message>
++    <message>
++        <source>Images (*.png *.ico *.jpg)</source>
++        <translation>Hình ảnh (*.png *.ico *.jpg)</translation>
++    </message>
++    <message>
++        <source>User commands (*.uc)</source>
++        <translation>Lệnh người dùng (*.uc)</translation>
++    </message>
++    <message>
++        <source>Select commands</source>
++        <translation>Chọn lệnh</translation>
++    </message>
++    <message>
++        <source>Script</source>
++        <translation>Script</translation>
++    </message>
++</context>
++<context>
++    <name>frmMain</name>
++    <message>
++        <source>User commands</source>
++        <translation>Lệnh người dùng</translation>
++    </message>
++</context>
++<context>
++    <name>UserCommandsSettings</name>
++    <message>
++        <source>Hint</source>
++        <translation>Gợi ý</translation>
++    </message>
++    <message>
++        <source>Icon</source>
++        <translation>Biểu tượng</translation>
++    </message>
++    <message>
++        <source>Type</source>
++        <translation>Loại</translation>
++    </message>
++    <message>
++        <source>Code</source>
++        <translation>Mã</translation>
++    </message>
++    <message>
++        <source>Up</source>
++        <translation>Lên</translation>
++    </message>
++    <message>
++        <source>Down</source>
++        <translation>Xuống</translation>
++    </message>
++    <message>
++        <source>Add</source>
++        <translation>Thêm</translation>
++    </message>
++    <message>
++        <source>Remove</source>
++        <translation>Xóa</translation>
++    </message>
++    <message>
++        <source>Remove all</source>
++        <translation>Xóa tất cả</translation>
++    </message>
++    <message>
++        <source>Import</source>
++        <translation>Nhập</translation>
++    </message>
++    <message>
++        <source>Export</source>
++        <translation>Xuất</translation>
++    </message>
++</context>
++<context>
++    <name>frmImport</name>
++    <message>
++        <source>User commands import</source>
++        <translation>Nhập lệnh người dùng</translation>
++    </message>
++    <message>
++        <source>Repository commands:</source>
++        <translation>Lệnh trong kho:</translation>
++    </message>
++    <message>
++        <source>Name</source>
++        <translation>Tên</translation>
++    </message>
++    <message>
++        <source>Author</source>
++        <translation>Tác giả</translation>
++    </message>
++    <message>
++        <source>Description</source>
++        <translation>Mô tả</translation>
++    </message>
++    <message>
++        <source>From file</source>
++        <translation>Từ tệp</translation>
++    </message>
++    <message>
++        <source>Update</source>
++        <translation>Cập nhật</translation>
++    </message>
++    <message>
++        <source>Next</source>
++        <translation>Tiếp</translation>
++    </message>
++    <message>
++        <source>Cancel</source>
++        <translation>Hủy</translation>
++    </message>
++</context>
++</TS>
