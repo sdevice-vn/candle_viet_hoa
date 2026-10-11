@@ -1,0 +1,69 @@
+name: Build Candle Tieng Viet (Windows)
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lay ma nguon Candle moi nhat va ap dung ban dich tieng Viet
+        shell: bash
+        run: |
+          git clone --depth 1 https://github.com/Denvi/Candle.git candle
+          # Checkout tren Windows co the doi patch sang CRLF; doi lai LF
+          sed -i 's/\r$//' candle_vi.patch
+          cd candle
+          git apply --whitespace=nowarn ../candle_vi.patch
+
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: >-
+            mingw-w64-x86_64-toolchain
+            mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-ninja
+            mingw-w64-x86_64-qt5-base
+            mingw-w64-x86_64-qt5-serialport
+            mingw-w64-x86_64-qt5-script
+            mingw-w64-x86_64-qt5-websockets
+            mingw-w64-x86_64-qt5-multimedia
+            mingw-w64-x86_64-qt5-winextras
+            mingw-w64-x86_64-qt5-tools
+
+      - name: Build
+        shell: msys2 {0}
+        run: |
+          cd candle
+          # Bo qua plugin Designer va script-binding (khong can de chay chuong trinh)
+          sed -i '/designerplugins/d;/scriptbindings/d' CMakeLists.txt
+          # Bien dich ban dich plugin (.ts -> .qm)
+          for ts in src/candleplugins/*/translation_vi.ts; do lrelease-qt5 "$ts" -qm "${ts%.ts}.qm"; done
+          # CMakeLists cua Candle cai thu muc <config>/ chua DLL (dung cho vcpkg); tao san de khong loi
+          mkdir -p build/src/candle/Release
+          cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$PWD/../dist"
+          cmake --build build
+          cmake --install build
+
+      - name: Package
+        shell: msys2 {0}
+        run: |
+          cd dist
+          ls
+          windeployqt-qt5 --release --no-translations --no-angle --no-opengl-sw --no-system-d3d-compiler candle.exe || echo "windeployqt returned non-zero, continuing with manual copy"
+          mkdir -p platforms
+          cp -n /mingw64/share/qt5/plugins/platforms/qwindows.dll platforms/ || cp -n /mingw64/lib/qt5/plugins/platforms/qwindows.dll platforms/
+          for f in candle.exe customwidgets.dll platforms/qwindows.dll; do
+            [ -f "$f" ] && ldd "$f" | grep -i '/mingw64/' | awk '{print $3}' | while read d; do cp -n "$d" .; done
+          done
+          ls -R . | head -80
+          test -f translations/candle_vi.qm || { echo "THIEU translations/candle_vi.qm"; exit 1; }
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Candle_Windows_TiengViet
+          path: dist
