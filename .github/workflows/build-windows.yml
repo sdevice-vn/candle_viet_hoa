@@ -57,7 +57,7 @@ jobs:
           mkdir -p platforms
           # cp -n tra ve ma loi khi file da ton tai -> dung cp -f va khong de loi lam dung script
           cp -f /mingw64/share/qt5/plugins/platforms/qwindows.dll platforms/ 2>/dev/null || cp -f /mingw64/lib/qt5/plugins/platforms/qwindows.dll platforms/ 2>/dev/null || true
-          for f in candle.exe customwidgets.dll platforms/qwindows.dll; do
+          for f in candle.exe libcustomwidgets.dll platforms/qwindows.dll; do
             if [ -f "$f" ]; then
               for d in $(ldd "$f" | grep -i '/mingw64/' | awk '{print $3}'); do
                 cp -f "$d" . || true
@@ -67,6 +67,51 @@ jobs:
           find . -maxdepth 2 | sort > ../dist_list.txt
           head -n 100 ../dist_list.txt
           test -f translations/candle_vi.qm || { echo "THIEU translations/candle_vi.qm"; exit 1; }
+
+      - name: Tao bo cai dat (Setup.exe)
+        shell: pwsh
+        run: |
+          $iss = @'
+          [Setup]
+          AppId={{7D3C2A10-5B8E-4F6A-9C21-3E4A7B1D0C55}
+          AppName=Candle (Tiếng Việt)
+          AppVersion=1.0
+          DefaultDirName={localappdata}\Programs\Candle
+          DefaultGroupName=Candle
+          PrivilegesRequired=lowest
+          OutputDir=installer_out
+          OutputBaseFilename=Candle_TiengViet_Setup
+          Compression=lzma2
+          SolidCompression=yes
+          ArchitecturesInstallIn64BitMode=x64
+          UninstallDisplayIcon={app}\candle.exe
+          WizardStyle=modern
+
+          [Tasks]
+          Name: "desktopicon"; Description: "Tạo biểu tượng trên màn hình nền (Desktop)"; Flags: checkedonce
+
+          [Files]
+          Source: "{#SrcDir}\*"; DestDir: "{app}"; Flags: recursesubdirs createallsubdirs ignoreversion
+
+          [Icons]
+          Name: "{autoprograms}\Candle"; Filename: "{app}\candle.exe"
+          Name: "{autodesktop}\Candle"; Filename: "{app}\candle.exe"; Tasks: desktopicon
+
+          [Run]
+          Filename: "{app}\candle.exe"; Description: "Chạy Candle ngay"; Flags: nowait postinstall skipifsilent
+          '@
+          # Ghi UTF-8 co BOM de Inno Setup doc dung chu co dau
+          [System.IO.File]::WriteAllText("$PWD\installer.iss", $iss, (New-Object System.Text.UTF8Encoding($true)))
+          $iscc = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
+          if (-not (Test-Path $iscc)) { choco install innosetup -y --no-progress; }
+          & $iscc "/DSrcDir=$env:GITHUB_WORKSPACE\dist" installer.iss
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          Get-ChildItem installer_out
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Candle_Setup_TiengViet
+          path: installer_out/Candle_TiengViet_Setup.exe
 
       - uses: actions/upload-artifact@v4
         with:
